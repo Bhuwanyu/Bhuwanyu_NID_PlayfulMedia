@@ -7,7 +7,7 @@ function draw() {
   background("rgb(30,26,26)");
 
    //SHADOWS
-  fill(mouseX/2,mouseX/2,mouseY/2,mouseY+10);//(colour,alpha)
+  fill(mouseX/2,0,0,mouseY+10);//(colour,alpha)
   
   //    
   triangle(440, 560, 320, 315, 260, 335); //17
