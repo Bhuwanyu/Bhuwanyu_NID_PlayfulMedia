@@ -1,174 +1,313 @@
- function setup() {
-  createCanvas(500, 600);
-  noCursor();
-}
+// let angerTri = [];//stores all your red triangle pieces (their coordinates).
+// let angerShadow = [];//stores all your shadow triangles (their coordinates).
+// let fade = 255;//controls how visible (opaque) they are.
+// let fadeDelay=120;
+// let state = "anger";// tells the program which emotion to draw: "anger" or "wonder".
+// let mainTriangleSize=50; //size of the main triangle in wonder state.
+// let expand = 1; //controls how much the main triangle will grow later
+// let expandSpeed = 1.5;
 
-function draw() {
-  background("rgb(30,26,26)");
-
-   //SHADOWS
-  fill(mouseX/2,0,0,mouseY+10);//(colour,alpha)
-  
-  //    
-  triangle(440, 560, 320, 315, 260, 335); //17
-  triangle(475, 420, 400, 220, 350, 250); //16
-  triangle(150, 38, 400, 225, 350, 260); //15
-  triangle(75, 575, 450, 220, 420, 180); //14
-  triangle(149, 70, 450, 230, 450, 275); //13
-  triangle(455, 490, 340, 370, 325, 330); //12
-  triangle(230, 584, 365, 280, 365, 320); //11
-  triangle(320, 560, 332, 370, 300, 390); //10
-  triangle(390, 470, 350, 80, 345, 150); //9
-  triangle(480, 470, 340, 170, 333, 80); //8
-  triangle(330, 10, 327, 175, 170, 420); //7
-  triangle(480, 550, 160, 415, 110, 440); //6
-  triangle(20, 350, 120, 459, 240, 380); //5
-  triangle(10, 548, 240, 398, 220, 460); //4
-  triangle(100, 70, 240, 446, 360, 375); //3
-  triangle(60, 50, 255, 476, 220, 485); //2
-  triangle(50, 90, 175, 536, 190, 495); //1
-
-   // MAIN TRIANGLES
-  stroke("#000000");
-  strokeWeight(1.7);
-  fill(mouseY+30,mouseY+31,mouseX/2,mouseX+43);//(colour,alpha)
-  triangle(217, 490, 175, 536, 190, 495); //1
-  triangle(231, 450, 255, 476, 220, 485); //2
-  triangle(250, 420, 240, 446, 360, 375); //3
-  triangle(160, 480, 240, 398, 220, 460); //4
-  triangle(20, 590, 120, 459, 240, 380); //5
-  triangle(180, 350, 160, 415, 110, 440); //6
-  triangle(320, 110, 327, 175, 170, 420); //7
-  triangle(400, 40, 340, 170, 333, 80); //8
-  triangle(380, 70, 350, 80, 345, 150); //9
-  triangle(320, 340, 332, 370, 300, 390); //10
-  triangle(352, 294, 365, 280, 365, 320); //11
-  triangle(335, 290, 340, 370, 325, 330); //12
-  triangle(419, 190, 450, 230, 450, 275); //13
-  triangle(455, 5, 450, 220, 420, 180); //14
-  triangle(350, 290, 400, 225, 350, 260); //15
-  triangle(440, 10, 400, 220, 350, 250); //16
-  triangle(400, 100, 320, 315, 260, 335); //17
-
-  // let angle=frameCount* 0.01;
-  // rotate(angle);
-  fill("#e98181ff");
-  triangle(mouseX, mouseY - 10, mouseX + 10, mouseY + 10, mouseX - 10, mouseY + 10); //18 Main
-}
 // function setup() {
 //   createCanvas(500, 600);
-//   noCursor(); // optional, hides default cursor
+//   frameRate(30);
+//   angerShadow = [
+//     { x1: 440, y1: 560, x2: 320, y2: 315, x3: 260, y3: 335, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 475, y1: 420, x2: 400, y2: 220, x3: 350, y3: 250, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 150, y1: 38, x2: 400, y2: 225, x3: 350,  y3: 260, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 75, y1: 575, x2: 450, y2: 220, x3: 420,  y3: 180, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 149, y1: 70, x2: 450, y2: 230, x3: 450,  y3: 275, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 455, y1: 490, x2: 340, y2: 370, x3: 325, y3: 330, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 230, y1: 584, x2: 365, y2: 280, x3: 365, y3: 320, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 320, y1: 560, x2: 332, y2: 370, x3: 300, y3: 390, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 390, y1: 470, x2: 350, y2: 80, x3: 345,  y3: 150, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 480, y1: 470, x2: 340, y2: 170, x3: 333, y3: 80,  vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 330, y1: 10, x2: 327, y2: 175, x3: 170,  y3: 420, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 480, y1: 550, x2: 160, y2: 415, x3: 110, y3: 440, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 20, y1: 350, x2: 120, y2: 459, x3: 240,  y3: 380, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 10, y1: 548, x2: 240, y2: 398, x3: 220,  y3: 460, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 100, y1: 70, x2: 240, y2: 446, x3: 360,  y3: 375, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 60, y1: 50, x2: 255, y2: 476, x3: 220,   y3: 485, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//     { x1: 50, y1: 90, x2: 175, y2: 536, x3: 190,   y3: 495, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+//   ];
+//   // Each red triangle from design
+//   angerTri = [
+//     //like recipe card for triangles.
+//     { x1: 217, y1: 490, x2: 175, y2: 536, x3: 190, y3: 495, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 231, y1: 450, x2: 255, y2: 476, x3: 220, y3: 485, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 250, y1: 420, x2: 240, y2: 446, x3: 360, y3: 375, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 160, y1: 480, x2: 240, y2: 398, x3: 220, y3: 460, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 20 , y1: 590, x2: 120, y2: 459, x3: 240, y3: 380, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 180, y1: 350, x2: 160, y2: 415, x3: 110, y3: 440, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 320, y1: 110, x2: 327, y2: 175, x3: 170, y3: 420, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 400, y1: 40 , x2: 340, y2: 170, x3: 333, y3: 80 , vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 380, y1: 70 , x2: 350, y2: 80 , x3: 345, y3: 150, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 320, y1: 340, x2: 332, y2: 370, x3: 300, y3: 390, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 352, y1: 294, x2: 365, y2: 280, x3: 365, y3: 320, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 335, y1: 290, x2: 340, y2: 370, x3: 325, y3: 330, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 419, y1: 190, x2: 450, y2: 230, x3: 450, y3: 275, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 455, y1: 5  , x2: 450, y2: 220, x3: 420, y3: 180, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 350, y1: 290, x2: 400, y2: 225, x3: 350, y3: 260, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 440, y1: 10 , x2: 400, y2: 220, x3: 350, y3: 250, vx: random(-1, 1), vy: random(-1, 1) },
+//     { x1: 400, y1: 100, x2: 320, y2: 315, x3: 260, y3: 335, vx: random(-1, 1), vy: random(-1, 1) },
+//   ];
 // }
-
 // function draw() {
-//   background("rgb(30,26,26)");
+//  let bg = map(fade, 255, 0, 30, 220);
+//   background(bg, bg, bg - 20);
+//   if (state === "anger") {
+//     drawAnger();
+//     drawShadow();
+//   } else if (state === "wonder") {
+//     drawWonder();
+//   }
+// }
+// function drawShadow() {
+//   //draw all the shadow triangles
+//   for (let triangle of angerShadow) {
+    
+//     stroke(0, 0, 0, fade / 4);
+//     fill(0, 0, 0, fade / 4);//fade is divided by 4 so shadows are lighter.
+//     beginShape();
+//     vertex(triangle.x1, triangle.y1);
+//     vertex(triangle.x2, triangle.y2);
+//     vertex(triangle.x3, triangle.y3);
+//     endShape(CLOSE);
+    
+//     // Move outward from center   
+//     triangle.x1 += triangle.vx;
+//     triangle.y1 += triangle.vy;
+//     triangle.x2 += triangle.vx;
+//     triangle.y2 += triangle.vy;
+//     triangle.x3 += triangle.vx;
+//     triangle.y3 += triangle.vy;
+//   }
+//   fade -= 2;
+//   if (fade <= 0) {
+//     fade = 0;
+//   }
+// }
+// function drawAnger() {
+//   //draw all the red triangles
+//   for (let triangle of angerTri) {
+//     frameRate(30);
+//     stroke(239, 7, 7, fade);
+//     fill(239, 7, 7, fade);// calling fade here makes them fade out later.
+//     beginShape();
+//     vertex(triangle.x1, triangle.y1);
+//     vertex(triangle.x2, triangle.y2);
+//     vertex(triangle.x3, triangle.y3);
+//     endShape(CLOSE);
 
-//   // Movement based on mouse position
-//   let moveX = map(mouseX, 0, width, -30, 30);
-//   let moveY = map(mouseY, 0, height, -30, 30);
-
+//     // Move outward from center
+//     triangle.x1 += triangle.vx;
+//     triangle.y1 += triangle.vy;
+//     triangle.x2 += triangle.vx;
+//     triangle.y2 += triangle.vy;
+//     triangle.x3 += triangle.vx;
+//     triangle.y3 += triangle.vy;
+//   }
+//   }
+//    if (fadeDelay > 0) {
+//     fadeDelay--; // countdown 2 seconds
+// } else {
+//     fade -= 2;
+//     if (fade <= 0) {
+//         fade = 0;
+//         state = "wonder";
+//     }
+// }
+// function drawWonder() {
 //   push();
-//   translate(moveX, moveY);
+//   translate(width/2, height/2);
 
-//   // DRAW TRIANGLES (SHADOW + MAIN) WITH RANDOM COLORS
-  
-//   for (let i = 0; i < 17; i++) {
-//     fill(random(10, 255), random(80, 20), random(100, 255), random(150, 255)); // random RGBA
-//     drawTriangle(i);
+//   // expand main triangle
+//   fill(255, 200, 0, 200); // bright yellow
+//   let s = mainTriangleSize;
+//   triangle(-s, s, 0, -s, s, s);
+
+//   // concentric triangles
+//   stroke(255, 100, 0, 150);
+//   strokeWeight(2);
+//   for (let i = 1; i <= 3; i++) {
+//     let size = s + i * 20;
+//     triangle(-size, size, 0, -size, size, size);
 //   }
 
 //   pop();
 
-//   // Draw small main triangle following cursor (on top)
-//   fill("#e98181ff");
-  
-//   triangle(mouseX, mouseY - 10, mouseX + 10, mouseY + 10, mouseX - 10, mouseY + 10);
+//   mainTriangleSize += expandSpeed; // expand
 // }
+let angerTri = [];
+let angerShadow = [];
+let fade = 255;
+let fadeDelay = 120; // ~2 seconds
+let state = "anger";
+let mainTriangleSize = 50;
+let maxTriangleSize = 250;
+let expandSpeed = 1.5;
+let mainColor = [0, 0, 0]; // start black
+let emittedTriangles = [];
+let colorChangeStarted = false;
 
-// function drawTriangle(n) {
-//   switch (n) {
-//     case 0: triangle(440, 560, 320, 315, 260, 335); break;
-//     case 1: triangle(475, 420, 400, 220, 350, 250); break;
-//     case 2: triangle(150, 38, 400, 225, 350, 260); break;
-//     case 3: triangle(75, 575, 450, 220, 420, 180); break;
-//     case 4: triangle(149, 70, 450, 230, 450, 275); break;
-//     case 5: triangle(455, 490, 340, 370, 325, 330); break;
-//     case 6: triangle(230, 584, 365, 280, 365, 320); break;
-//     case 7: triangle(320, 560, 332, 370, 300, 390); break;
-//     case 8: triangle(390, 470, 350, 80, 345, 150); break;
-//     case 9: triangle(480, 470, 340, 170, 333, 80); break;
-//     case 10: triangle(330, 10, 327, 175, 170, 420); break;
-//     case 11: triangle(480, 550, 160, 415, 110, 440); break;
-//     case 12: triangle(20, 350, 120, 459, 240, 380); break;
-//     case 13: triangle(10, 548, 240, 398, 220, 460); break;
-//     case 14: triangle(100, 70, 240, 446, 360, 375); break;
-//     case 15: triangle(60, 50, 255, 476, 220, 485); break;
-//     case 16: triangle(50, 90, 175, 536, 190, 495); break;
-//   }
-// }
-// let triangles = [];
+function setup() {
+  createCanvas(500, 600);
+  frameRate(30);
 
-// function setup() {
-//   createCanvas(500, 600);
-//   noCursor();
+  // Shadows
+  angerShadow = [
+   { x1: 440, y1: 560, x2: 320, y2: 315, x3: 260, y3: 335, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 475, y1: 420, x2: 400, y2: 220, x3: 350, y3: 250, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 150, y1: 38, x2: 400, y2: 225, x3: 350,  y3: 260, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 75, y1: 575, x2: 450, y2: 220, x3: 420,  y3: 180, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 149, y1: 70, x2: 450, y2: 230, x3: 450,  y3: 275, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 455, y1: 490, x2: 340, y2: 370, x3: 325, y3: 330, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 230, y1: 584, x2: 365, y2: 280, x3: 365, y3: 320, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 320, y1: 560, x2: 332, y2: 370, x3: 300, y3: 390, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 390, y1: 470, x2: 350, y2: 80, x3: 345,  y3: 150, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 480, y1: 470, x2: 340, y2: 170, x3: 333, y3: 80,  vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 330, y1: 10, x2: 327, y2: 175, x3: 170,  y3: 420, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 480, y1: 550, x2: 160, y2: 415, x3: 110, y3: 440, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 20, y1: 350, x2: 120, y2: 459, x3: 240,  y3: 380, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 10, y1: 548, x2: 240, y2: 398, x3: 220,  y3: 460, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 100, y1: 70, x2: 240, y2: 446, x3: 360,  y3: 375, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 60, y1: 50, x2: 255, y2: 476, x3: 220,   y3: 485, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+    { x1: 50, y1: 90, x2: 175, y2: 536, x3: 190,   y3: 495, vx: random(-1.5, 1.5), vy: random(-1.5, 1.5) },
+  ];
 
-//   // Create a set of triangles with different depth layers
-//   let coords = [
-//     [440, 560, 320, 315, 260, 335],
-//     [475, 420, 400, 220, 350, 250],
-//     [150, 38, 400, 225, 350, 260],
-//     [75, 575, 450, 220, 420, 180],
-//     [149, 70, 450, 230, 450, 275],
-//     [455, 490, 340, 370, 325, 330],
-//     [230, 584, 365, 280, 365, 320],
-//     [320, 560, 332, 370, 300, 390],
-//     [390, 470, 350, 80, 345, 150],
-//     [480, 470, 340, 170, 333, 80],
-//     [330, 10, 327, 175, 170, 420],
-//     [480, 550, 160, 415, 110, 440],
-//     [20, 350, 120, 459, 240, 380],
-//     [10, 548, 240, 398, 220, 460],
-//     [100, 70, 240, 446, 360, 375],
-//     [60, 50, 255, 476, 220, 485],
-//     [50, 90, 175, 536, 190, 495]
-//   ];
+  // Red anger triangles
+  angerTri = [
+{ x1: 217, y1: 490, x2: 175, y2: 536, x3: 190, y3: 495, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 231, y1: 450, x2: 255, y2: 476, x3: 220, y3: 485, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 250, y1: 420, x2: 240, y2: 446, x3: 360, y3: 375, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 160, y1: 480, x2: 240, y2: 398, x3: 220, y3: 460, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 20 , y1: 590, x2: 120, y2: 459, x3: 240, y3: 380, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 180, y1: 350, x2: 160, y2: 415, x3: 110, y3: 440, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 320, y1: 110, x2: 327, y2: 175, x3: 170, y3: 420, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 400, y1: 40 , x2: 340, y2: 170, x3: 333, y3: 80 , vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 380, y1: 70 , x2: 350, y2: 80 , x3: 345, y3: 150, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 320, y1: 340, x2: 332, y2: 370, x3: 300, y3: 390, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 352, y1: 294, x2: 365, y2: 280, x3: 365, y3: 320, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 335, y1: 290, x2: 340, y2: 370, x3: 325, y3: 330, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 419, y1: 190, x2: 450, y2: 230, x3: 450, y3: 275, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 455, y1: 5  , x2: 450, y2: 220, x3: 420, y3: 180, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 350, y1: 290, x2: 400, y2: 225, x3: 350, y3: 260, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 440, y1: 10 , x2: 400, y2: 220, x3: 350, y3: 250, vx: random(-1, 1), vy: random(-1, 1) },
+    { x1: 400, y1: 100, x2: 320, y2: 315, x3: 260, y3: 335, vx: random(-1, 1), vy: random(-1, 1) },
+  ];
+}
 
-//   for (let i = 0; i < coords.length; i++) {
-//     triangles.push({
-//       c: coords[i],
-//       depth: random(3, 1.5), // smaller = farther away, larger = closer
-//       col: color(random(100, 255), random(100, 255), random(255), random(180, 255))
-//     });
-//   }
-// }
+function draw() {
+  let bg = map(fade, 255, 0, 30, 220);
+  background(bg, bg, bg - 20);
 
-// function draw() {
-//   background("rgb(30,26,26)");
+  // Draw main triangle first behind anger triangles
+  drawMainTriangle();
 
-//   for (let t of triangles) {
-//     // Parallax movement
-//     let moveX = map(mouseX, 0, width, -30, 30) * t.depth;
-//     let moveY = map(mouseY, 0, height, -30, 30) * t.depth;
+  if (state === "anger") {
+    drawAnger();
+    drawShadow();
+  } else if (state === "wonder") {
+    drawWonder();
+  }
+}
 
-//     // Randomize color slightly over time
-//     if (frameCount % 10 === 0) {
-//       t.col = color(
-//         random(100, 255),
-//         random(100, 255),
-//         random(255),
-//         random(150, 255)
-//       );
-//     }
+function drawShadow() {
+  for (let triangle of angerShadow) {
+    stroke(0, 0, 0, fade / 4);
+    fill(0, 0, 0, fade / 4);
+    beginShape();
+    vertex(triangle.x1, triangle.y1);
+    vertex(triangle.x2, triangle.y2);
+    vertex(triangle.x3, triangle.y3);
+    endShape(CLOSE);
 
-//     push();
-//     translate(moveX, moveY);
-//     noStroke();
-//     fill(t.col);
-//     triangle(t.c[0], t.c[1], t.c[2], t.c[3], t.c[4], t.c[5]);
-//     pop();
-//   }
+    triangle.x1 += triangle.vx;
+    triangle.y1 += triangle.vy;
+    triangle.x2 += triangle.vx;
+    triangle.y2 += triangle.vy;
+    triangle.x3 += triangle.vx;
+    triangle.y3 += triangle.vy;
+  }
+}
 
-//   // Cursor-following triangle (main focus)
-//   fill("#e98181ff");
-//   triangle(mouseX, mouseY - 10, mouseX + 10, mouseY + 10, mouseX - 10, mouseY + 10);
-// }
+function drawAnger() {
+  for (let triangle of angerTri) {
+    stroke(239, 7, 7, fade);
+    fill(239, 7, 7, fade);
+    beginShape();
+    vertex(triangle.x1, triangle.y1);
+    vertex(triangle.x2, triangle.y2);
+    vertex(triangle.x3, triangle.y3);
+    endShape(CLOSE);
+
+    triangle.x1 += triangle.vx;
+    triangle.y1 += triangle.vy;
+    triangle.x2 += triangle.vx;
+    triangle.y2 += triangle.vy;
+    triangle.x3 += triangle.vx;
+    triangle.y3 += triangle.vy;
+  }
+
+  if (fadeDelay > 0) {
+    fadeDelay--;
+  } else {
+    fade -= 2;
+    if (fade <= 0) {
+      fade = 0;
+      state = "wonder";
+      colorChangeStarted = true; // start bright color transition
+    }
+  }
+}
+
+function drawMainTriangle() {
+  push();
+  translate(width / 2, height / 2);
+
+  // gradually change color to bright random
+  if (colorChangeStarted && mainTriangleSize < maxTriangleSize) {
+    mainColor = [random(200, 255), random(50, 255), random(50, 255)];
+  }
+
+  fill(mainColor[0], mainColor[1], mainColor[2], 200);
+  stroke(0);
+  strokeWeight(2);
+
+  triangle(-mainTriangleSize, mainTriangleSize, 0, -mainTriangleSize, mainTriangleSize, mainTriangleSize);
+
+  // emit small triangles after reaching max size
+  if (mainTriangleSize >= maxTriangleSize) {
+    for (let i = 0; i < 3; i++) {
+      let t = {
+        x: 0,
+        y: 0,
+        size: random(100, 125),
+        vx: random(-2, 2),
+        vy: random(-2, 2),
+        alpha: 100
+      };
+      emittedTriangles.push(t);
+    }
+  }
+
+  // draw emitted triangles
+  for (let t of emittedTriangles) {
+    fill(255, 200, 0, t.alpha/2);
+    noStroke();
+    triangle(t.x, t.y, t.x + t.size, t.y, t.x + t.size / 2, t.y - t.size);
+    t.x += t.vx;
+    t.y += t.vy;
+    t.alpha -= -2;
+  }
+
+  emittedTriangles = emittedTriangles.filter(tri => tri.alpha > 0);
+
+  pop();
+
+  // expand main triangle if not maxed
+  if (mainTriangleSize < maxTriangleSize) mainTriangleSize += expandSpeed;
+}
+
+function drawWonder() {
+  // optional: you can add extra effects here while main triangle is fully expanded
+}

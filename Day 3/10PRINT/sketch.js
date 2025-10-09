@@ -70,7 +70,7 @@
 // }
 let x, y, spacing;
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(innerWidth,innerHeight);
   background(0);
 
   x = 0;
@@ -100,6 +100,7 @@ function draw() {
     ellipse(x + 5, y + 5, spacing);
   }
   x = x + spacing; //Incrementing the value of variable constantly.
+
   if (x > width) {
     x = 0;
     y = y + spacing;
@@ -107,6 +108,8 @@ function draw() {
   if (random(0, 1) < 0.5) {
     fill(138, random(0, 255), 255);
   } else {
-    noFill();
+
   }
+  
 }
+

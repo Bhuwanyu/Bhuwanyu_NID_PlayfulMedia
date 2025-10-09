@@ -1,31 +1,24 @@
 function setup() {
-  // createCanvas(800, 800);
-  createCanvas(innerWidth,innerHeight);
+  createCanvas(800, 800);
   background(220);
-  //Calling Function only Once
-
+  
 }
 
 function draw() {
-
-
+  
+ 
 }
-function mousePressed() {
-  //Defining Parameters
+function mousePressed(){
   let eyeSize;
-  eyeSize = random(0, 200);
-  drawEye(mouseX, mouseY, eyeSize);
-}
-function drawEye(x, y, z) { //Naming Parameters(x,y,z)
 
-  //Calling Parameters
+  drawEye(mouseX,mouseY);
+}
+ function drawEye(x,y){
   noStroke();
-  fill(random(0, 0), random(0, 222), 136);
-  ellipse(x, y, z + 300, z);
-  fill(random(0, 0), random(0, 222), 136);
-  ellipse(x, y, 100 + z, 100 + z);
-  fill(random(0, 0), random(0, 222), 136);
-  ellipse(x, y, z + 10);
-
-  //will change colours.
-}
+  fill(random(0,0),random(0,222),136);
+  ellipse(x,y,100,200);
+  fill(random(0,0),random(0,222),136);
+  ellipse(x,y ,100,100);
+  fill("RED");
+  ellipse(x,y,50,50);
+  }
