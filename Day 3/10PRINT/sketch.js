@@ -8,7 +8,7 @@
 // }
 
 // function draw() {
-  
+
 //   choice=random(0,1);
 //   if(choice<0.5){
 //     rect(x+size,y,25);
@@ -32,7 +32,7 @@
 // }
 
 // function draw() {
-  
+
 
 //   //pick a random number between 0 and 1
 //   choice = random(0,1);
@@ -68,45 +68,45 @@
 //     rect(mouseX,mouseY,random(10,40));
 //   }
 // }
-let x , y,spacing;
-function setup(){
-  createCanvas(400,400);
+let x, y, spacing;
+function setup() {
+  createCanvas(400, 400);
   background(0);
-  
-  x=0;
-  y=0;
-  spacing=10;
+
+  x = 0;
+  y = 0;
+  spacing = 10;
 }
-function draw(){
+function draw() {
   // stroke(random(0,255),random(0,255),random(0,255));
-  stroke(138,random(0,255),255);
-  strokeWeight(random(0,2));
-  if(random(0,1)<0.5){//Like a toss
+  stroke(138, random(0, 255), 255);
+  strokeWeight(random(0, 2));
+  if (random(0, 1) < 0.5) {//Like a toss
     // line(x,y,x+spacing,y+spacing);
     // noFill();
-    fill(random(0,255),0,random(0,255));
+    fill(random(0, 255), 0, random(0, 255));
     strokeWeight(1);
-    rect(x,y,spacing);
-  }else if(random(0,1)>0.5){
-   line(x,y+spacing,x+spacing,y);//thinking of cordinates as spacing.
-  // ellipse(x+3,y+3,spacing);
-  } else if(random(0,1)>0.5){
-     line(x,y,x+spacing,y+spacing);
+    rect(x, y, spacing);
+  } else if (random(0, 1) > 0.5) {
+    line(x, y + spacing, x + spacing, y);//thinking of cordinates as spacing.
+    // ellipse(x+3,y+3,spacing);
+  } else if (random(0, 1) > 0.5) {
+    line(x, y, x + spacing, y + spacing);
   }
-    else{
+  else {
     noFill();
-   //rect(x,y,spacing);
-  //  noStroke();
-   ellipse(x+5,y+5,spacing);
+    //rect(x,y,spacing);
+    //noStroke();
+    ellipse(x + 5, y + 5, spacing);
   }
-  x=x+spacing; //Incrementing the value of variable constantly.
-  if(x>width){
-    x=0;
-    y=y+spacing;
+  x = x + spacing; //Incrementing the value of variable constantly.
+  if (x > width) {
+    x = 0;
+    y = y + spacing;
   }
-  if(random(0,1)<0.5){
-    fill(138,random(0,255),255);
-  }else{
+  if (random(0, 1) < 0.5) {
+    fill(138, random(0, 255), 255);
+  } else {
     noFill();
   }
 }
