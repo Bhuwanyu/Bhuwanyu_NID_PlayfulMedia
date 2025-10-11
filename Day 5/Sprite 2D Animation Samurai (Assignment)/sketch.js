@@ -34,11 +34,11 @@ function setup() {
 }
 
 function draw() {
-  background(255,0,0);
+  background(255-a*2,0,0,255-a+5);
   a=a+0.07;
   noStroke();
-  fill(255);
-  ellipse(innerWidth-140-a,90,160);
+  fill(255-a);
+  ellipse(innerWidth-140-a,90+a+0.3,160);
   noFill();
   strokeWeight(4);
   stroke(1)
