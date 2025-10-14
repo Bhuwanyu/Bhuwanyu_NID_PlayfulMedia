@@ -1,4 +1,4 @@
-// let x,y,size;
+// let x,y,size,choice;
 // function setup() {
 //   createCanvas(400, 400);
 //   background(220);
@@ -11,11 +11,14 @@
 
 //   choice=random(0,1);
 //   if(choice<0.5){
-//     rect(x+size,y,25);
-//   }else{
+//     stroke(random(0,255),random(0,255),random(0,255));
+//     strokeWeight(random( 3,5));
 //     line(x,y,x+size,y+size);
+//   }else{
+//     line(x+size,y,x,y+size);
 //   }
 //   x=x+size;//incriment 
+//   //if it walks off the screen, x=0, y=y+size
 //   if(x>width){
 //     x=0
 //     y=y+size;
@@ -46,7 +49,7 @@
 //   //move the point to the right
 //   x=x+size;
 
-//   //if it walks off the screen, x=0, y=y+size
+//   
 //   if(x>width) {
 //     x=0;
 //     y=y+size;
@@ -84,7 +87,7 @@ function draw() {
   if (random(0, 1) < 0.5) {//Like a toss
     // line(x,y,x+spacing,y+spacing);
     // noFill();
-    fill(random(0, 255), 0, random(0, 255));
+    fill(frameCount/20, 0, 0);
     strokeWeight(1);
     rect(x, y, spacing);
   } else if (random(0, 1) > 0.5) {

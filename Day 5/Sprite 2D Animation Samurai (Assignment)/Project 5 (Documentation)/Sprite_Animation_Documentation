@@ -1,0 +1,26 @@
+# **Project 5: Sprite Sheet Experimentation |Bhuwanyu Agrawal (2025)**
+This project explores sprite sheets and interactive animation in p5.js. The aim was to understand how images can be divided into grids, stored in arrays, and manipulated to create a player-controlled sprite. The focus was on experimentation, using a pre-existing working sprite sheetbcode and gradually adding own sprite sheet and experiment around interaction through Keys.
+
+**Process**
+- Found a sprite sheet online.
+- Sprite Sheet Setup in Photoshop
+- Implemented it into prewritten starter code that divided the sprite sheet into frames using a grid system.
+- Stored each frame in an array for easy access and animation.
+- Played the sprite sheet as a looped animation for a moving character.
+- Learned how frame indices and arrays work together to create smooth sprite animation.
+
+**Experimentation & Interaction**
+- Added key interactions: controlling the sprite with keyboard inputs.
+- Played around with animation speed, frame selection, and movement.
+- Experimented with background changes.
+- Explored how changing variables like frame rate, position, and background color affects the overall feel of the animation.
+
+**Outcome**
+- A working interactive sprite animation with player control.
+- Clear understanding of arrays, grids, and frame management in sprite sheets.
+- Demonstrates experimentation and creativity in interactive digital art.
+
+**Learnings**
+- How sprite sheets are structured and how to extract frames using arrays.
+- How player interactions can be linked to sprite animations.
+- The value of hands-on experimentation to understand technical concepts in interactive design.
