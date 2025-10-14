@@ -34,7 +34,7 @@ function setup() {
 }
 
 function draw() {
-  background(255-a*2,0,0,);
+  background(255-a*2,0,0,100);
   a=a+0.07;
   noStroke();
   fill(255-a);

@@ -2,11 +2,12 @@ let spacing = 25;
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
-  background(0);
-  noLoop(); //stops continuous drawing 
+  //background(0);
+  frameRate(2); //stops continuous drawing 
 }
 
 function draw() {
+  background(0);
   for (let y = 0; y < height; y += spacing) {
     for (let x = 0; x < width; x += spacing) {
 

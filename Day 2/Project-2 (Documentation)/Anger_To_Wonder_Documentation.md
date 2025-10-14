@@ -9,13 +9,13 @@ The concept of this project was to transform the static representation of anger 
 *The main objective was to convey emotional transformation using triangles, color, motion, and variable-driven animation.*
 *To achieve this, I focused on:*
 
-- **Animating the existing anger triangles to slowly fade out, symbolizing the dissipation of chaotic thoughts.
+- Animating the existing anger triangles to slowly fade out, symbolizing the dissipation of chaotic thoughts.
 
-- **Creating a central triangle that grows over time, transitioning in color from black -> dark red -> bright and finally colorful, representing clarity emerging from anger.
+- Creating a central triangle that grows over time, transitioning in color from black -> dark red -> bright and finally colorful, representing clarity emerging from anger.
 
-- **Using variables to control motion, opacity, and size, demonstrating how coding logic can represent emotional progression.
+- Using variables to control motion, opacity, and size, demonstrating how coding logic can represent emotional progression.
 
-- **Increasing frame rate over time, reflecting the shift from rough, difficult emotional turbulence to smooth, flowing wonder.
+- Increasing frame rate over time, reflecting the shift from rough, difficult emotional turbulence to smooth, flowing wonder.
 
 - **Layering smaller triangles radiating outward to illustrate the spreading of clarity and cheefulness from the individual’s emotional center.
 
@@ -42,7 +42,6 @@ The project began by adapting the triangle layout from the first project, mainta
 - Emergent triangles: Central equilateral triangle growing and transitioning through colors to symbolize wonder.
 
 ***Structure:***
-
 *Initial frames:* Rough, uneven motion of triangles reflects anger.
 
 *Later frames:* Smooth, colorful expansion reflects harmony and flow.
@@ -56,6 +55,9 @@ The project began by adapting the triangle layout from the first project, mainta
 
 - Ways to build continuity between projects, transforming static compositions into dynamic narratives.
 
-**Outcome and Reflection**
+**Outcome**
+*This is the final result/outcome of the assignment: Changing Anger to Wonder* 
+[text](https://bhuwanyu.github.io/Bhuwanyu_NID_PlayfulMedia/Day%202/AngerToWonder%20(Assignment)/)
+
 The final composition effectively narrates the transition from anger to wonder, showing how emotional state can evolve into clarity and positivity. By combining variable-driven animation, color transitions, and layered motion, the project conveys not just the visual aesthetics of triangles, but also a story of emotional growth.
 This project deepened my understanding of how coding logic, motion, and color interplay can be used for conceptual storytelling in digital art. It serves as a bridge between static emotional representation and dynamic narrative exploration.
