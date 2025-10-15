@@ -14,8 +14,8 @@ class Flower {
             fill(0,0,255);
         }
 
-        // ellipse(this.x, this.y, 20, 50);
-        // ellipse(this.x, this.y, 50, 20);
+        ellipse(this.x, this.y, 20, 50);
+        ellipse(this.x, this.y, 50, 20);
         ellipse(this.x, this.y, 20, 40);
 
     }
