@@ -1,66 +1,76 @@
-let gBall, player1 = 0, player2 = 0;
+let gBall;
 let lPaddle, rPaddle;
-let pingSound;
+let player1 = 0;
+let player2 = 0;
+let TingSound;
+let img;
+let bgMusic;
 
-function preload(){
-
-  pingSound=loadSound()
+function preload() {
+  TingSound = loadSound("Assests/01.mp3");
+  bgMusic = loadSound(  "Assests/02.mp3");
 }
 
-
-
 function setup() {
-  createCanvas(innerWidth, innerHeight);
+  createCanvas(800, 400);
+  bgMusic.loop();
   gBall = new Ball(width / 2, height / 2, 5, 5);
 
-  let pWidth = 10, pHeight = 100;
-  lPaddle = new paddle(0, height / 2 - pHeight/2, pHeight, pWidth, 5);
+  // gPaddle = new Paddle(width-20, height / 2, 5, 5);
 
-  rPaddle = new paddle(width - pWidth, height / 2 - pHeight/2, pHeight, pWidth, 5);
+  let pWidth = 10,
+    pHeight = 60;
+  lPaddle = new Paddle(0, height / 2 - pHeight / 2, pWidth, pHeight, 10);
+  rPaddle = new Paddle(
+    width - pWidth,
+    height / 2 - pHeight / 2,
+    pWidth,
+    pHeight,
+    10
+  );
 }
 
 function draw() {
   background(220);
-  //BALL BEHAVIOUR
-
   gBall.move();
   gBall.checkCollisionPaddle(lPaddle);
   gBall.checkCollisionPaddle(rPaddle);
   gBall.checkCollisionWall();
   gBall.show();
 
+  noStroke();
+  textSize(20);
+  textFont("poppins");
+  fill(255); // or another color that shows over your background
+  textAlign(LEFT, TOP);
+  text("Player 1: " + player1, 20, 20);
+
+  textAlign(RIGHT, BOTTOM);
+  text("Player 2: " + player2, width - 20, height - 20);
+
   let point = gBall.checkWinner();
-  if(point == 1) {
+  if (point == 1) {
     player1++;
     gBall.reset();
-    console.log("p1 vs p2 :" + player1 + " " + player2)
-  } else if(point ==2 ) {
+    console.log("p1 vs p2 :" + player1 + " " + player2);
+  } else if (point == 2) {
     player2++;
     gBall.reset();
-    console.log("p1 vs p2 :" + player1 + " " + player2)
+    console.log("p1 vs p2 :" + player1 + " " + player2);
   }
 
-  lPaddle.show();
   rPaddle.show();
+  lPaddle.show();
 
-//if keys UP and DOWN are pressed move the right paddle
+  if (keyIsDown(UP_ARROW)) {
+    rPaddle.moveUp();
+  } else if (keyIsDown(DOWN_ARROW)) {
+    rPaddle.moveDown();
+  }
 
-if(keyIsDown(UP_ARROW)){
-
-  rPaddle.moveUp();
-} else if(keyIsDown(DOWN_ARROW)){
-
-  rPaddle.moveDown();
-}
-
-//if keys W and s are pressed move the left paddle
-
-if(keyIsDown(87)){
-
-  lPaddle.moveUp();
-} else if(keyIsDown(83)){
-
-  lPaddle.moveDown();
-}
-
+  if (keyIsDown(87)) {
+    lPaddle.moveUp();
+  } else if (keyIsDown(83)) {
+    lPaddle.moveDown();
+  }
 }

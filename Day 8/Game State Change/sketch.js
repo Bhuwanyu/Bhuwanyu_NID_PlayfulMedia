@@ -1,12 +1,12 @@
-let noLayers=2;
-let layerImages=[];
+let noLayers = 2
 
-function preload(){
-  
-}
 
 function setup() {
   createCanvas(400, 400);
+  imageMode(CENTER);
+  console.log("innerwidth:", windowWidth);
+  console.log("width:", width);
+  console.log("outerwidth:", outerWidth);
 }
 
 function draw() {
