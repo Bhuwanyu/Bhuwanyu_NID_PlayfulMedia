@@ -1,10 +1,9 @@
 class Bullet {
-  constructor(x, y) {
+  constructor(x, y, speed) {
     this.x = x;
     this.y = y;
-    this.w = 30;
-    this.h = 10;
-    this.speed = -8;
+    this.speed = speed;
+    this.r = 10;
   }
 
   update() {
@@ -12,18 +11,16 @@ class Bullet {
   }
 
   show() {
-    push();
-    fill("#FFD700");
-    rect(this.x, this.y, this.w, this.h, 5);
-    pop();
+    fill("orange");
+    ellipse(this.x, this.y, this.r);
   }
 
   hits(player) {
     return (
+      this.x > player.x &&
       this.x < player.x + player.w &&
-      this.x + this.w > player.x &&
-      this.y < player.y + player.h &&
-      this.y + this.h > player.y
+      this.y > player.y &&
+      this.y < player.y + player.h
     );
   }
 }
