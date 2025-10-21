@@ -1,13 +1,11 @@
 let player, enemy, bullet;
-let bgImage;
+let bg1,bg2,bg3,bg4,bg5,bg6;
 let playerImage, enemyImage;
 let playerSprites = [], enemySprites = [];
 let playerCols = 16, playerRows = 12;
 let enemyCols = 16, enemyRows = 12;
-  let a=0;
-  let snowX = [];
-let snowY = [];
-let snowSpeed = [];
+let bgMusic, gunShot, walking;
+let a=0;
 let gameState = 0; // 0 = title, 1–6 = running frames, 7 = final fight
 let dialogues = [
   "",
@@ -20,8 +18,20 @@ let dialogues = [
 ];
 
 function preload() {
-  playerImage = loadImage("Images/Player1.png");
+  playerImage = loadImage("Images/Player.png");
   enemyImage = loadImage("Images/Enemy.png");
+  bgMusic = loadSound("Music/BGM.mp3");
+  gunShot = loadSound("Music/GunShot.mp3");
+  walking = loadSound("Music/Walking.mp3");
+  bgMusic = loadSound("Music/BGM.mp3");
+  bgMusic = loadSound("Music/BGM.mp3");
+  bg1 = loadImage("Images/BG1.png");
+  bg2 = loadImage("Images/BG2.png");
+  bg3 = loadImage("Images/BG3.png");
+  bg4 = loadImage("Images/BG4.png");
+  bg5 = loadImage("Images/BG5.png");
+  bg6 = loadImage("Images/BG6.png");
+  bg7 = loadImage("Images/BG7.png");
 }
 
 function setup() {
@@ -33,11 +43,6 @@ function setup() {
 
   player = new Player(200, height - 400, 250, 250, playerSprites);
   enemy = new Enemy(width - 400, height - 400, 250, 250, enemySprites);
-    for (let i = 0; i < 200; i++) {
-    snowX[i] = random(width);
-    snowY[i] = random(-height, height);
-    snowSpeed[i] = random(1, 3);
-  }
 }
 
 function draw() {
@@ -45,12 +50,11 @@ function draw() {
 
   if (gameState === 0) {
     drawTitleScreen();
+    player.show();
   } else if (gameState >= 1 && gameState <= 6) {
     drawRunningScene();
-   
   } else if (gameState === 7) {
     drawFinalScene();
-    
   }
 
   drawDialogueBox(dialogues[gameState]);
@@ -60,13 +64,28 @@ function keyPressed() {
   if (gameState === 0 && keyCode === ENTER) {
     gameState = 1;
     player.x = 200;
+    bgMusic.loop();
+  }
+
+  // Attack trigger
+  if ((key === 'g' || key === 'G') && !player.isDead) {
+    player.attack();
+  }
+}
+
+function mousePressed() {
+  if (!player.isDead) {
+    player.attack();
   }
 }
 
 // ------------------------- FRAME FUNCTIONS -------------------------
 
 function drawTitleScreen() {
-  background(10);
+  image(bg7,0,0);
+  background(10,150);
+  fill(0, 240);
+  rect(0, height - 150, width, 150);
   fill(255);
   textAlign(CENTER, CENTER);
   textSize(80);
@@ -78,12 +97,12 @@ function drawTitleScreen() {
 function drawRunningScene() {
   // different background tones for each stage
   let colors = [
-    [50, 50, 80],
-    [70, 50, 100],
-    [100, 40, 80],
-    [120, 60, 60],
-    [150, 70, 50],
-    [180, 80, 40]
+    [bg7],
+    [bg5],
+    [bg4],
+    [bg6],
+    [bg1],
+    [bg2]
   ];
 
   let index = constrain(gameState - 1, 0, colors.length - 1);
@@ -91,53 +110,68 @@ function drawRunningScene() {
 
   let isMoving = false;
   let isSprinting = false;
+  let movingLeft = false;
 
-  if (keyIsDown(RIGHT_ARROW)) {
+  // Right movement
+  if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
     isMoving = true;
     if (keyIsDown(SHIFT)) isSprinting = true;
     player.moveRight(isSprinting);
   }
 
-  player.show(isMoving, isSprinting);
+  // Left movement
+  if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
+    isMoving = true;
+    movingLeft = true;
+    if (keyIsDown(SHIFT)) isSprinting = true;
+    player.moveLeft(isSprinting);
+  }
 
-  // when player reaches right edge -> next frame
-  if (player.x + player.w >= width - 50) {
-    player.x = 200;
-    gameState++;
+  player.show(isMoving, isSprinting, movingLeft);
+
+  // When player reaches right edge -> next frame
+  if (player.x >= width - 50) {
+    player.x = 50;
+    if (gameState < 7) gameState++;
+  }
+
+  // When player reaches left edge -> go back previous frame
+  if (player.x <= 0 && gameState > 1) {
+    gameState--;
+    player.x = width - player.w - 50;
   }
 }
 
 function drawFinalScene() {
+  background(bg3);
+  fill(0, 240);
+  rect(0, height - 150, width, 150);
 
-  background(225-a, 0, 0);
-  fill(255,255-a/5);
-  ellipse(1600-a/3,300+a/3,200,200);
-  a=a+1;
-  fill(255);
-  noStroke();
-  for (let i = 0; i < snowX.length; i++) {
-    ellipse(snowX[i], snowY[i], 5, 5);
-    snowY[i] += snowSpeed[i];
-    if (snowY[i] > height) {
-      snowY[i] = 0;
-      snowX[i] = random(width);
-    }
-  }
   let isMoving = false;
   let isSprinting = false;
+  let movingLeft = false;
 
-  if (!player.isDead && keyIsDown(RIGHT_ARROW)) {
-    isMoving = true;
-    if (keyIsDown(SHIFT)) isSprinting = true;
-    player.moveRight(isSprinting);
+  if (!player.isDead) {
+    if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
+      isMoving = true;
+      if (keyIsDown(SHIFT)) isSprinting = true;
+      player.moveRight(isSprinting);
+    }
+    if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
+      isMoving = true;
+      movingLeft = true;
+      if (keyIsDown(SHIFT)) isSprinting = true;
+      player.moveLeft(isSprinting);
+    }
   }
 
   enemy.show();
-  player.show(isMoving, isSprinting);
+  player.show(isMoving, isSprinting, movingLeft);
 
-  // spawn bullet only once
   if (!bullet && !player.isDead) {
     bullet = enemy.shoot();
+    gunShot.play();
+    bgMusic.stop();
   }
 
   if (bullet) {
@@ -150,17 +184,32 @@ function drawFinalScene() {
   }
 
   if (player.isDead) {
-    fill(255);
-    textAlign(CENTER);
-    textSize(50);
-    text("Who uses a sword in the modern world, you fool!", width / 2, height / 2 + 300);
-  }
+  let msg = "Who uses a sword in the modern world, you fool!";
+  textSize(36);
+  let textW = textWidth(msg) + 40;
+  let textH = 60;
+
+  // Target position above the enemy
+  let boxX = enemy.x + enemy.w / 2 - textW / 2;
+  let boxY = enemy.y - 20 ;
+
+  // Keep box inside canvas bounds
+  boxX = constrain(boxX, 20, width - textW - 20);
+  boxY = constrain(boxY, 20, height - textH+40);
+  // Draw text
+  fill(255);
+  textAlign(CENTER, CENTER);
+  text(msg, boxX + textW / 2, boxY + textH / 2);
+  background(0,0+a/2);
+  a=a+1;
+}
+
 }
 
 // ------------------------- Dialogue UI -------------------------
 function drawDialogueBox(dialogue) {
   if (!dialogue) return;
-  fill(0, 150);
+  fill(0, 240);
   rect(0, height - 150, width, 150);
   fill(255);
   textSize(32);

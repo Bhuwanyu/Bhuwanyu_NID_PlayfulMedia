@@ -7,7 +7,7 @@ class Bullet {
   }
 
   update() {
-    this.x += this.speed;
+    this.x += this.speed*4;
   }
 
   show() {
