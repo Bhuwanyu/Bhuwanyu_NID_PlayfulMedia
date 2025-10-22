@@ -99,8 +99,8 @@ function drawRunningScene() {
   let colors = [
     [bg7],
     [bg5],
+    [bg3],
     [bg4],
-    [bg6],
     [bg1],
     [bg2]
   ];
@@ -143,7 +143,7 @@ function drawRunningScene() {
 }
 
 function drawFinalScene() {
-  background(bg3);
+  background(bg6);
   fill(0, 240);
   rect(0, height - 150, width, 150);
 
