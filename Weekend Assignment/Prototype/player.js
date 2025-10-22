@@ -1,13 +1,13 @@
 class Player {
   constructor() {
     this.x = 50;
-    this.y = height - 100;
+    this.y = height;
     this.width = spriteImage.width / spriteX;
     this.height = spriteImage.height / spriteY;
   }
 
   show() {
-    image(sprites[currentRow][currentCol], this.x, this.y, this.width, this.height);
+    image(sprites[currentRow][currentCol], this.x, this.y-60, this.width, this.height);
 
     frameCountAnim++;
     if (frameCountAnim % animationSpeed === 0) {
