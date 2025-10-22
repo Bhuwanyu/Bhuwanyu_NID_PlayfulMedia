@@ -57,7 +57,7 @@ The project began by adapting the triangle layout from the first project, mainta
 
 **Outcome**
 *This is the final result/outcome of the assignment: Changing Anger to Wonder* 
-[text](https://bhuwanyu.github.io/Bhuwanyu_NID_PlayfulMedia/Day%202/AngerToWonder%20(Assignment)/)
+[Link To Work](https://bhuwanyu.github.io/Bhuwanyu_NID_PlayfulMedia/Day%202/AngerToWonder%20(Assignment)/)
 
 The final composition effectively narrates the transition from anger to wonder, showing how emotional state can evolve into clarity and positivity. By combining variable-driven animation, color transitions, and layered motion, the project conveys not just the visual aesthetics of triangles, but also a story of emotional growth.
 This project deepened my understanding of how coding logic, motion, and color interplay can be used for conceptual storytelling in digital art. It serves as a bridge between static emotional representation and dynamic narrative exploration.

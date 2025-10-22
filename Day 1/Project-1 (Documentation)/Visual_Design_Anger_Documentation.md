@@ -48,3 +48,5 @@ The black triangle in the center represents an individual, surrounded and consum
 
 The final composition successfully conveys anger through geometric abstraction. The process also deepened my understanding of how computational tools like P5.js can be used not only for interactivity but for visual storytelling through form.
 This project marked my first step in merging artistic intuition with coding logic, and set the tone for my exploration of emotional expression through digital design.
+
+[Link to work](https://bhuwanyu.github.io/Bhuwanyu_NID_PlayfulMedia/Day%201/Anger%20P-2%20(Assignment)/) 

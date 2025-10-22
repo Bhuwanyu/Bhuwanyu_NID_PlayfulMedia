@@ -7,8 +7,8 @@ let img;
 let bgMusic;
 
 function preload() {
-  TingSound = loadSound("Assests/01.mp3");
-  bgMusic = loadSound(  "Assests/02.mp3");
+  TingSound = loadSound("Assets/01.mp3");
+  bgMusic = loadSound(  "Assets/02.mp3");
 }
 
 function setup() {
@@ -31,7 +31,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(200,0,0);
   gBall.move();
   gBall.checkCollisionPaddle(lPaddle);
   gBall.checkCollisionPaddle(rPaddle);

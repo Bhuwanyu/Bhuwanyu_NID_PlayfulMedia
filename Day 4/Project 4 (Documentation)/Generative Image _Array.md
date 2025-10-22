@@ -1,5 +1,5 @@
 # Project 4: Generative Image Pattern Exploration | Bhuwanyu Agrawal (2025)
-This project is an experimental exploration of generative patterns through handmade reepetive patterns. The goal is to learn how repetition, arrays, and loops can create continuous motifs across a canvas. Currently, the work is in progress, focusing on experimentation and drawing a repeative pattern as my current one is not repeative.
+This project is an experimental exploration of generative patterns through handmade repetive patterns. The goal is to learn how repetition, arrays, and loops can create continuous motifs across a canvas. Currently, the work is in progress, focusing on experimentation and drawing a repeative pattern as my current one is not repeative.
 
 **Process**
 - Motif Experimentation
@@ -21,3 +21,6 @@ This project is an experimental exploration of generative patterns through handm
 **Learnings**
 - How repetition, variation, and arrays interact in generative design.
 - Exploring how simple coding rules can lead to emergent patterns.
+
+**Outcome**
+[Link to Work](https://bhuwanyu.github.io/Bhuwanyu_NID_PlayfulMedia/Day%204/Generative%20Art%20Images%20-(Assignment)/)
